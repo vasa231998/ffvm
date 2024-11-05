@@ -1,0 +1,7 @@
+flet==0.23.2
+paho-mqtt==1.6.1
+redis==4.3.3
+pg8000==1.30.4
+requests==2.32.3
+segno
+pybase64
