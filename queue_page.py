@@ -62,97 +62,97 @@ def order_queue(page:ft.Page,recipe_id,sugar,ice):
 	print(f"the cur and cur 1 is {cur}, {cur1}")
 	sleep(0.1)
 
-	if cur == None or cur1 == None: 
-		add(recipe_id,sugar,ice)
+	# if cur == None or cur1 == None: 
+	add(recipe_id,sugar,ice)
 
 ## No of orders - status created
-	orders = list_orders()
+# 	orders = list_orders()
 
-## First order id - status created
-	first_order_id = get_first_orderid()
+# ## First order id - status created
+# 	first_order_id = get_first_orderid()
 
-## Get order id if already cooking going on
-	in_progress_1 = progress_orderid(1)
-	in_progress_2 = progress_orderid(2)
+# ## Get order id if already cooking going on
+# 	in_progress_1 = progress_orderid(1)
+# 	in_progress_2 = progress_orderid(2)
 
-## Get order id if already cooking going on
-	tot_time = int(orders_time())/60
+# ## Get order id if already cooking going on
+# 	tot_time = int(orders_time())/60
 
-	my_order_id_1 = int(page.client_storage.get("order_id_1"))
-	my_order_id_2 = int(page.client_storage.get("order_id_2"))
+# 	my_order_id_1 = int(page.client_storage.get("order_id_1"))
+# 	my_order_id_2 = int(page.client_storage.get("order_id_2"))
 
 
-	if in_progress_1 != my_order_id_1 or in_progress_2 != my_order_id_2:
+# 	if in_progress_1 != my_order_id_1 or in_progress_2 != my_order_id_2:
 
-		page.clean()
+# 		page.clean()
 
-		image_progress = ft.Image(src="https://i.pinimg.com/originals/3d/6a/a9/3d6aa9082f3c9e285df9970dc7b762ac.gif",
-								width=400,
-								height=400,
-								fit=ft.ImageFit.CONTAIN
-								)
-		order_text = ft.Text(
-								value=f"Your Order Id : {my_order_id_1}",
-								size=35,
-								color=ft.colors.BLACK,
-								font_family="RobotoSlab",
-								weight=ft.FontWeight.W_700,
-							)
-		text = ft.Text(
-								value=f"Pls wait Your Order in Queue, Will be completed in {int(tot_time)} mins",
-								size=35,
-								color=ft.colors.BLUE,
-								font_family="RobotoSlab",
-								weight=ft.FontWeight.W_700,
-							)
-		completed = ft.Column(
-				spacing=10,
-				scroll=ft.ScrollMode.ALWAYS,
-				controls=[
-					image_progress,
-					order_text,
-					text,
-					ft.ResponsiveRow(
-						[
+# 		image_progress = ft.Image(src="https://i.pinimg.com/originals/3d/6a/a9/3d6aa9082f3c9e285df9970dc7b762ac.gif",
+# 								width=400,
+# 								height=400,
+# 								fit=ft.ImageFit.CONTAIN
+# 								)
+# 		order_text = ft.Text(
+# 								value=f"Your Order Id : {my_order_id_1}",
+# 								size=35,
+# 								color=ft.colors.BLACK,
+# 								font_family="RobotoSlab",
+# 								weight=ft.FontWeight.W_700,
+# 							)
+# 		text = ft.Text(
+# 								value=f"Pls wait Your Order in Queue, Will be completed in {int(tot_time)} mins",
+# 								size=35,
+# 								color=ft.colors.BLUE,
+# 								font_family="RobotoSlab",
+# 								weight=ft.FontWeight.W_700,
+# 							)
+# 		completed = ft.Column(
+# 				spacing=10,
+# 				scroll=ft.ScrollMode.ALWAYS,
+# 				controls=[
+# 					image_progress,
+# 					order_text,
+# 					text,
+# 					ft.ResponsiveRow(
+# 						[
 
-						],
-					),
-				],
-				horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-					)
+# 						],
+# 					),
+# 				],
+# 				horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+# 					)
 		
 		
-		page.add(
-			ft.ResponsiveRow(
-			[
-				ft.Column(
+# 		page.add(
+# 			ft.ResponsiveRow(
+# 			[
+# 				ft.Column(
 				
-				[
-					completed,
-				],
-			alignment= ft.MainAxisAlignment.CENTER,
-			spacing = 10,
-			scroll=ft.ScrollMode.ALWAYS,
-			on_scroll_interval=0,
-				),
-			],
-			alignment= ft.MainAxisAlignment.CENTER,
-			spacing = "spaceBetween"
-			),
-				)
+# 				[
+# 					completed,
+# 				],
+# 			alignment= ft.MainAxisAlignment.CENTER,
+# 			spacing = 10,
+# 			scroll=ft.ScrollMode.ALWAYS,
+# 			on_scroll_interval=0,
+# 				),
+# 			],
+# 			alignment= ft.MainAxisAlignment.CENTER,
+# 			spacing = "spaceBetween"
+# 			),
+# 				)
 	
-		page.update()
+# 		page.update()
 
-		while (in_progress != my_order_id_1):
+# 		while (in_progress != my_order_id_1):
 			
-			tot_time = int(orders_time())/60
-			text.value = f"Pls wait Your Order in Queue, Will be completed in {int(tot_time)} mins",
-			text.update()
-			sleep(5)
-			in_progress = int(progress_orderid())
-			print(f"my id = {my_order_id_1}")
+# 			tot_time = int(orders_time())/60
+# 			text.value = f"Pls wait Your Order in Queue, Will be completed in {int(tot_time)} mins",
+# 			text.update()
+# 			sleep(5)
+# 			in_progress = int(progress_orderid())
+# 			print(f"my id = {my_order_id_1}")
 		
 
-	if in_progress != 0 and in_progress == my_order_id_1 :
-		page.clean()
-		order_confirmed(page, recipe_id)
+# 	if in_progress != 0 and in_progress == my_order_id_1 :
+# 		page.clean()
+# 		order_confirmed(page, recipe_id)

@@ -13,13 +13,13 @@ import base64
 import segno
 from client import *
 
-def redis_connection6(ips):
-	try:
-		global r
-		r = redis.Redis()
-		r = redis.Redis(host=ips,port=6380)
-	except Exception as e :
-		print(f"The error is redis error {e}")
-		redis_connection6("100.96.37.82")
+# def redis_connection6(ips):
+# 	try:
+# 		global r
+# 		r = redis.Redis()
+# 		r = redis.Redis(host=ips,port=6380)
+# 	except Exception as e :
+# 		print(f"The error is redis error {e}")
+# 		redis_connection6("100.96.37.82")
 		
-redis_connection6("100.96.37.82")
+# redis_connection6("100.96.37.82")

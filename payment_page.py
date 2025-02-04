@@ -39,9 +39,9 @@ def payment(page:ft.Page,recipe_id,sugar1,ice1,userid, number, name):
 	sugar = sugar1
 	ice = ice1
 
-	o_id = page.client_storage.get("order_id")
-
-	if o_id == None:
+	# o_id = page.client_storage.get("order_id")
+	o_id = 1
+	if o_id == 1:
 
 		# order_queue(page,recipe_id,sugar,ice)
 		if (model == "mobile"):
@@ -347,28 +347,32 @@ def payment(page:ft.Page,recipe_id,sugar1,ice1,userid, number, name):
 					response1 = requests.get(url1, auth=("rzp_live_YDqmG6kyPkYdAJ", "lcT8WFhLrx4VMoD999SacgWb"))
 					print(response1.json())
 					s2 = response1.json()
+					print(s2["status"])
+					# sleep(10)
 					return s2["status"]
+				
 
 				while(i < 120):
-					sleep(5)
-					# print("in while")
-					# timer.value = f"Page will automatically closes in {120-i} secs"
-					# timer.update()
-					# status =  check_status(payment_id)
-					# print(status)
-					# if status == "paid":
-					# 	print("Exiting now")
-					# 	break
-					# s = page.client_storage.get("current")
-					# if s != 'payment':
-					# 	i = 201
-					# 	break
-						
+					sleep(2)
+					print("in while")
+					timer.value = f"Page will automatically closes in {120-i} secs"
+					timer.update()
+					status =  check_status(payment_id)
+					print(status)
+					if status == "paid":
+						print("Exiting now")
+						break
+					s = page.client_storage.get("current")
+					if s != 'payment':
+						i = 201
+						break
+					
 					i = i+2
-					break
+					# break
 
 				if i < 119:
 					page.appbar.disabled = False
+					print(i)
 					print("Payment Confirmed")
 					page.clean()
 					page.add(ft.Column(
@@ -400,8 +404,8 @@ def payment(page:ft.Page,recipe_id,sugar1,ice1,userid, number, name):
 					sleep(2)
 					page.update()
 		
-		if o_id != None:
-			page.clean()
-			page.add(ft.Text(value = "Already Your Order in Queue",size = 25))
-			sleep(3)
-			order_queue(page,recipe_id,sugar,ice)
+		# if o_id != None:
+		# 	page.clean()
+		# 	page.add(ft.Text(value = "Already Your Order in Queue",size = 25))
+		# 	sleep(3)
+		# 	order_queue(page,recipe_id,sugar,ice)

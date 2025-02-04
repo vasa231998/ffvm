@@ -16,15 +16,28 @@ def completedPage(page : ft.Page,vid):
 
     if vid == 1:
         vessel1_id = extract_recipe_id(1)
-        vessel1_recipe = getrecipename(vessel1_id)
-        vessel1_oid = extract_order_id(1)
-        r.set("vessel1_comp","no")
+        if vessel1_id != 0:
+            vessel1_recipe = getrecipename(vessel1_id)
+            vessel1_oid = extract_order_id(1)
+            r.set("vessel1_comp","no")
+        if vessel1_id == 0:
+            r.set("vessel1_comp","no")
+              
     
     if vid == 2:
         vessel1_id = extract_recipe_id(2)
-        vessel1_recipe = getrecipename(vessel1_id)
-        vessel1_oid = extract_order_id(2)
-        r.set("vessel2_comp","no")
+        if vessel1_id != 0 :
+            vessel1_recipe = getrecipename(vessel1_id)
+            vessel1_oid = extract_order_id(2)
+            r.set("vessel2_comp","no")
+        if vessel1_id == 0:
+            # vessel1_recipe = getrecipename(vessel1_id)
+            r.set("vessel2_comp","no")
+
+    if vessel1_id == 0:
+        vessel1_recipe = "Empty"
+        vessel1_oid = "empty"
+         
     
     page.clean()
     page.appbar.disabled = False

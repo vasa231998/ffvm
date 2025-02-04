@@ -391,9 +391,12 @@ def main(page:Page):
 		
 		
 		order_in_progress = progress_orderid(1)
-		prog = " - "
-		pb1.value = 0
-		rec1_text = ft.Text("")
+		if order_in_progress == 0:
+			prog = " - "
+			pb1.value = 0
+			rec1_text = ft.Text("")
+		print(order_in_progress)
+		sleep(5)
 		if order_in_progress != 0:
 			prog = order_in_progress
 			p = progress_percent(1)

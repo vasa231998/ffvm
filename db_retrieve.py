@@ -1174,8 +1174,8 @@ def progress_orderid(vid):
 
     except Exception as e :
         showStatusMsg(f"The error is {e} , progress_orderid")
-        connection("100.106.178.97")
-        progress_orderid()
+        # connection("100.106.178.97")
+        # progress_orderid()
         return 0
         pass
 
